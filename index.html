@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WALY - أداة إلكترونية ذكية تدعم الصيادلة في اتخاذ القرار العلاجي</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link id="theme-style" rel="stylesheet" href="css/light-theme.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>WALY</h1>
+                <p>أداة إلكترونية ذكية تدعم الصيادلة في اتخاذ القرار العلاجي</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#drug-database" class="active"><i class="fas fa-pills"></i> قاعدة بيانات الأدوية</a></li>
+                    <li><a href="#dose-calculator"><i class="fas fa-calculator"></i> حاسبة الجرعات</a></li>
+                    <li><a href="#therapeutic-helper"><i class="fas fa-stethoscope"></i> المساعد العلاجي</a></li>
+                    <li><a href="#guidelines"><i class="fas fa-book-medical"></i> الإرشادات العلاجية</a></li>
+                    <li><a href="#contact"><i class="fas fa-envelope"></i> تواصل معنا</a></li>
+                </ul>
+            </nav>
+            <div class="settings">
+                <button id="theme-toggle" title="تبديل المظهر"><i class="fas fa-moon"></i></button>
+                <button id="language-toggle" title="تبديل اللغة"><span>EN</span></button>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-menu">
+        <div class="close-menu">
+            <i class="fas fa-times"></i>
+        </div>
+        <ul>
+            <li><a href="#drug-database"><i class="fas fa-pills"></i> قاعدة بيانات الأدوية</a></li>
+            <li><a href="#dose-calculator"><i class="fas fa-calculator"></i> حاسبة الجرعات</a></li>
+            <li><a href="#therapeutic-helper"><i class="fas fa-stethoscope"></i> المساعد العلاجي</a></li>
+            <li><a href="#guidelines"><i class="fas fa-book-medical"></i> الإرشادات العلاجية</a></li>
+            <li><a href="#contact"><i class="fas fa-envelope"></i> تواصل معنا</a></li>
+        </ul>
+    </div>
+    <div class="overlay"></div>
+
+    <main>
+        <section id="drug-database" class="section active">
+            <div class="container">
+                <h2 class="section-title"><i class="fas fa-pills"></i> قاعدة بيانات الأدوية</h2>
+                <div class="search-container">
+                    <input type="text" id="drug-search" placeholder="ابحث عن دواء...">
+                    <button id="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                <div id="drug-info" class="info-container">
+                    <div class="placeholder-message">
+                        <i class="fas fa-search fa-3x"></i>
+                        <p>ابحث عن دواء للحصول على معلومات تفصيلية عنه</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="dose-calculator" class="section">
+            <div class="container">
+                <h2 class="section-title"><i class="fas fa-calculator"></i> حاسبة الجرعات</h2>
+                <div class="calculator-container">
+                    <div class="calculator-form">
+                        <div class="form-group">
+                            <label for="drug-name">اسم الدواء</label>
+                            <input type="text" id="drug-name" placeholder="أدخل اسم الدواء">
+                        </div>
+                        <div class="form-group">
+                            <label for="patient-weight">وزن المريض (كجم)</label>
+                            <input type="number" id="patient-weight" placeholder="أدخل وزن المريض">
+                        </div>
+                        <div class="form-group">
+                            <label for="patient-age">عمر المريض (سنة)</label>
+                            <input type="number" id="patient-age" placeholder="أدخل عمر المريض">
+                        </div>
+                        <div class="form-group">
+                            <label for="serum-creatinine">الكرياتينين في الدم (mg/dL)</label>
+                            <input type="number" id="serum-creatinine" step="0.1" placeholder="أدخل مستوى الكرياتينين">
+                        </div>
+                        <div class="form-group">
+                            <label>الجنس</label>
+                            <div class="radio-group">
+                                <input type="radio" id="male" name="gender" value="male" checked>
+                                <label for="male"> ذكر</label>
+                                <input type="radio" id="female" name="gender" value="female">
+                                <label for="female"> أنثى</label>
+                            </div>
+                        </div>
+                        <button id="calculate-dose" class="btn">حساب الجرعة</button>
+                    </div>
+                    <div id="dose-result" class="info-container">
+                        <div class="placeholder-message">
+                            <i class="fas fa-calculator fa-3x"></i>
+                            <p>أدخل بيانات المريض والدواء لحساب الجرعة المناسبة</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="therapeutic-helper" class="section">
+            <div class="container">
+                <h2 class="section-title"><i class="fas fa-stethoscope"></i> المساعد العلاجي</h2>
+                <div class="helper-container">
+                    <div class="conditions-sidebar">
+                        <h3>الحالات الإكلينيكية</h3>
+                        <ul id="conditions-list">
+                            <li data-condition="hypertension" class="active">ارتفاع ضغط الدم (HTN)</li>
+                            <li data-condition="diabetes">داء السكري (DM)</li>
+                            <li data-condition="ckd">أمراض الكلى المزمنة (CKD)</li>
+                            <li data-condition="heart-failure">قصور القلب</li>
+                            <li data-condition="bacterial-infections">العدوى البكتيرية</li>
+                            <li data-condition="asthma">الربو</li>
+                            <li data-condition="copd">مرض الانسداد الرئوي المزمن (COPD)</li>
+                            <li data-condition="dyslipidemia">اضطرابات الدهون</li>
+                            <li data-condition="gerd">ارتجاع المريء (GERD)</li>
+                            <li data-condition="peptic-ulcer">قرحة المعدة</li>
+                        </ul>
+                    </div>
+                    <div id="condition-details" class="condition-content">
+                        <!-- Condition details will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="guidelines" class="section">
+            <div class="container">
+                <h2 class="section-title"><i class="fas fa-book-medical"></i> الإرشادات العلاجية</h2>
+                <div class="guidelines-container">
+                    <div class="filter-container">
+                        <select id="guideline-filter">
+                            <option value="all">جميع الإرشادات</option>
+                            <option value="cardiology">أمراض القلب</option>
+                            <option value="endocrinology">الغدد الصماء</option>
+                            <option value="nephrology">أمراض الكلى</option>
+                            <option value="pulmonology">أمراض الرئة</option>
+                            <option value="infectious">الأمراض المعدية</option>
+                            <option value="gastroenterology">الجهاز الهضمي</option>
+                        </select>
+                    </div>
+                    <div id="guidelines-list" class="guidelines-grid">
+                        <!-- Guidelines will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="container">
+                <h2 class="section-title"><i class="fas fa-envelope"></i> تواصل معنا</h2>
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <div class="info-item">
+                            <i class="fas fa-user-md fa-2x"></i>
+                            <div class="info-content">
+                                <h3>الاسم</h3>
+                                <p>د. وائل محمد</p>
+                                <p>صيدلي إكلينيكي</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-phone fa-2x"></i>
+                            <div class="info-content">
+                                <h3>الهاتف</h3>
+                                <p>+20 123 456 7890</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-envelope fa-2x"></i>
+                            <div class="info-content">
+                                <h3>البريد الإلكتروني</h3>
+                                <p>wael@waly-pharma.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <h3>أرسل رسالة</h3>
+                        <form id="contact-form">
+                            <div class="form-group">
+                                <label for="name">الاسم</label>
+                                <input type="text" id="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">البريد الإلكتروني</label>
+                                <input type="email" id="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">الرسالة</label>
+                                <textarea id="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn">إرسال</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>WALY</h2>
+                    <p>أداة إلكترونية ذكية تدعم الصيادلة في اتخاذ القرار العلاجي</p>
+                </div>
+                <div class="footer-links">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="#drug-database">قاعدة بيانات الأدوية</a></li>
+                        <li><a href="#dose-calculator">حاسبة الجرعات</a></li>
+                        <li><a href="#therapeutic-helper">المساعد العلاجي</a></li>
+                        <li><a href="#guidelines">الإرشادات العلاجية</a></li>
+                        <li><a href="#contact">تواصل معنا</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>جميع الحقوق محفوظة &copy; 2025 WALY</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/translations.js"></script>
+    <script src="js/additional-drugs.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
